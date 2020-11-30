@@ -1,0 +1,40 @@
+<ngx-slick-carousel
+  class="carousel"
+  #slickModal="slick-carousel"
+  [config]="slideConfig"
+>
+  <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+    <img src="{{ slide.img }}" alt="" width="100%" height="390px" />
+  </div>
+</ngx-slick-carousel>
+
+<div class="container">
+  <div
+    class="search-results"
+    infinite-scroll
+    [infiniteScrollDistance]="scrollDistance"
+    [infiniteScrollUpDistance]="scrollUpDistance"
+    [infiniteScrollThrottle]="throttle"
+    (scrolled)="onScrollDown()"
+  >
+    <div class="row pt-5">
+      <app-poster-item
+        class="col-md-3 p-2"
+        *ngFor="let item of trendings"
+        [item]="item"
+      ></app-poster-item>
+    </div>
+  </div>
+  <div class="row pb-5">
+    <div class="col-md-12 p-5">
+      <ngx-spinner
+        bdOpacity="0.9"
+        bdColor=""
+        size="default"
+        color="#581f87"
+        type="ball-pulse-sync"
+        [fullScreen]="false"
+      ></ngx-spinner>
+    </div>
+  </div>
+</div>
